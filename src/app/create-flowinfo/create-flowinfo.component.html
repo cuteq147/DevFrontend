@@ -1,0 +1,35 @@
+<h3>Create Flowinfo</h3>
+<div [hidden]="successed" style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Flow Id</label>
+            
+            <input type="text" class="form-control" id="flowinfoId" required [(ngModel)]="flowInfo.id" name="flowinfoId">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Flow Name</label>
+            <input type="text" class="form-control" id="flowinfoName" required [(ngModel)]="flowInfo.name" name="flowinfoName">
+        </div>
+
+        <div class="form-group">
+            <label for="name">RuleCondition</label>
+            <select (change)="selectChangeHandler($event)">
+                <option *ngFor =" let con of RuleConditions | async;let i = index;" [selected] = "i==1" value={{con.id}}>
+                    {{con.name}}
+                </option>
+            </select>
+            <!--<input type="text" class="form-control" id="emailId" required [(ngModel)]="employee.emailId" name="emailId">-->
+        </div>
+
+        <div class="form-group">
+            <label for="name">Salience No</label>
+            <input type="text" class="form-control" id="salienceNo" required [(ngModel)]="flowInfo.salienceNo" name="salienceNo">
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+<div [hidden]="!successed">
+    <h4>You submitted successfully!</h4>
+</div>

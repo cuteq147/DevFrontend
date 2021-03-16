@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h1>FlowInfo</h1>
+  </div>
+  <div class="panel-body">
+      <table class="table table-striped table-bordered">
+          <thead>
+              <tr>
+                  <th>Flowid</th>
+                  <th>Name</th>
+                  <th>ConditionId</th>
+                  <th>ActionId</th>
+                  <th>SalienceNo</th>
+                  <th>EDIT</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let flowinfo of FlowInfos | async">
+                  <td>{{flowinfo.id}}</td>
+                  <td>{{flowinfo.name}}</td>
+                  <td>{{flowinfo.conditionContent}}</td>
+                  <td>{{flowinfo.actionContent}}</td>
+                  <td>{{flowinfo.salienceNo}}</td>
+                  <td><button (click)="deleteFlow(flowinfo.id)">Delete</button></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
